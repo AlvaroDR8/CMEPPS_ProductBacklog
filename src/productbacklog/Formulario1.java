@@ -96,6 +96,11 @@ public class Formulario1 extends javax.swing.JFrame {
                 cb1ItemStateChanged(evt);
             }
         });
+        cb1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(cb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 105, -1, -1));
 
         lVar5.setText("Numero de Datos Elementales de Salida");
@@ -104,6 +109,11 @@ public class Formulario1 extends javax.swing.JFrame {
         t1.setMaximumSize(new java.awt.Dimension(65, 28));
         t1.setMinimumSize(new java.awt.Dimension(65, 28));
         t1.setPreferredSize(new java.awt.Dimension(65, 28));
+        t1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                t1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(t1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 55, -1, -1));
 
         t2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -116,12 +126,22 @@ public class Formulario1 extends javax.swing.JFrame {
         t3.setMaximumSize(new java.awt.Dimension(30, 28));
         t3.setMinimumSize(new java.awt.Dimension(30, 28));
         t3.setPreferredSize(new java.awt.Dimension(30, 28));
+        t3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                t3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(t3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 205, -1, -1));
 
         t4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         t4.setMaximumSize(new java.awt.Dimension(30, 28));
         t4.setMinimumSize(new java.awt.Dimension(30, 28));
         t4.setPreferredSize(new java.awt.Dimension(30, 28));
+        t4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                t4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(t4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 255, -1, -1));
 
         pack();
@@ -189,9 +209,28 @@ public class Formulario1 extends javax.swing.JFrame {
             //METER AQUI EL METODO DE AÑADIR CON SUS COMPROBACIONES
         }else{
             //CAMBIAR DE VENTANA Y CERRAR LA ACTUAL
+            CalculoComplejidad ven = new CalculoComplejidad(tElementos);
+            ven.setVisible(true);
+            dispose();
         }
 
     }//GEN-LAST:event_b2ActionPerformed
+
+    private void cb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb1ActionPerformed
+
+    private void t1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_t1ActionPerformed
+
+    private void t3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_t3ActionPerformed
+
+    private void t4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_t4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_t4ActionPerformed
 
     /**
      * @param args the command line arguments
