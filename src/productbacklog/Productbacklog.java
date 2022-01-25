@@ -5,6 +5,8 @@
  */
 package productbacklog;
 
+import javax.swing.UIManager;
+
 /**
  *
  * @author usuario
@@ -15,7 +17,11 @@ public class Productbacklog {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Formulario1 f = new Formulario1();
+        
+        f.setVisible(true);
+        
+        
     }
-    
+
 }

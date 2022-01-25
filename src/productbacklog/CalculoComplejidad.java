@@ -44,20 +44,21 @@ public class CalculoComplejidad extends javax.swing.JFrame {
     private void DrawingTabla() {
 
         jTable1.setModel(complejidad);
-        String[] col = {"Tipo", "Nº Ficheros", "Nº Datos Elementales", "Complejidad"};
+        String[] col = {"Grupo Lógico","Tipo", "Nº Ficheros", "Nº Datos Elementales", "Complejidad"};
         complejidad.setColumnIdentifiers(col);
         jTable1.getTableHeader().setResizingAllowed(false);
-        jTable1.getColumnModel().getColumn(0).setPreferredWidth(50);
-        jTable1.getColumnModel().getColumn(1).setPreferredWidth(100);
-        jTable1.getColumnModel().getColumn(2).setPreferredWidth(140);
-        jTable1.getColumnModel().getColumn(3).setPreferredWidth(100);
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(100);
+        jTable1.getColumnModel().getColumn(1).setPreferredWidth(50);
+        jTable1.getColumnModel().getColumn(2).setPreferredWidth(100);
+        jTable1.getColumnModel().getColumn(3).setPreferredWidth(140);
+        jTable1.getColumnModel().getColumn(4).setPreferredWidth(100);
 
         fillTabla();
     }
 
     private void fillTabla() {
 
-        Object[] columna = new Object[5];
+        Object[] columna = new Object[6];
         int n = tElementos.size();
         int nF, nDE;
         String tipo;
@@ -73,15 +74,16 @@ public class CalculoComplejidad extends javax.swing.JFrame {
                 nDE = tElementos.get(i).getnDatosElementalesEnt();
                 int nCS = tElementos.get(i).getnDatosElementalesSal();
                 ArrayList<String> s = calculaCompCE(nF, nDE, nCS);
-                columna[0] = tipo;
-                columna[1] = nF;
+                columna[0] = tElementos.get(i).getNomGrupoLogico();
+                columna[1] = tipo;
+                columna[2] = nF;
                 if (s.get(1).equals("E")) {
-                    columna[2] = nDE;
+                    columna[3] = nDE;
                 } else {
-                    columna[2] = nCS;
+                    columna[3] = nCS;
                 }
 
-                columna[3] = s.get(0);
+                columna[4] = s.get(0);
                 complejidad.addRow(columna);
 
             } else {
@@ -89,10 +91,11 @@ public class CalculoComplejidad extends javax.swing.JFrame {
                 nF = tElementos.get(i).getnFicheros();
                 nDE = tElementos.get(i).getnDatosElementalesEnt();
 
-                columna[0] = tElementos.get(i).getNomTipoComponente();
-                columna[1] = nF;
-                columna[2] = nDE;
-                columna[3] = calculaComplejidad(nF, nDE, tipo);
+                columna[0] = tElementos.get(i).getNomGrupoLogico();
+                columna[1] = tElementos.get(i).getNomTipoComponente();
+                columna[2] = nF;
+                columna[3] = nDE;
+                columna[4] = calculaComplejidad(nF, nDE, tipo);
                 complejidad.addRow(columna);
             }
 
@@ -229,10 +232,15 @@ public class CalculoComplejidad extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Calculo de Complejidad");
+        setMaximumSize(new java.awt.Dimension(550, 309));
+        setMinimumSize(new java.awt.Dimension(550, 309));
+        setPreferredSize(new java.awt.Dimension(550, 309));
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -247,7 +255,7 @@ public class CalculoComplejidad extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel1.setText("Calculo de complejidad");
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 496, 165));
 
         jButton1.setText("Continuar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -255,31 +263,7 @@ public class CalculoComplejidad extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(23, 23, 23))
-        );
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 96, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -330,7 +314,6 @@ public class CalculoComplejidad extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
